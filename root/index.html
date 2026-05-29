@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Make Things With AI</title>
+        <style>
+            :root {
+                color-scheme: light dark;
+                --bg: #ffffff;
+                --text: #000000;
+                --accent: #0066cc;
+                --accent-hover: #0052a3;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg: #1a1a1a;
+                    --text: #ffffff;
+                    --accent: #4da6ff;
+                    --accent-hover: #66b3ff;
+                }
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                background-color: var(--bg);
+                color: var(--text);
+                transition:
+                    background-color 0.3s,
+                    color 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            body.dark-mode {
+                --bg: #1a1a1a;
+                --text: #ffffff;
+                --accent: #4da6ff;
+                --accent-hover: #66b3ff;
+            }
+
+            body.light-mode {
+                --bg: #ffffff;
+                --text: #000000;
+                --accent: #0066cc;
+                --accent-hover: #0052a3;
+            }
+
+            .container {
+                text-align: center;
+                max-width: 600px;
+            }
+
+            h1 {
+                font-size: 3em;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            p {
+                font-size: 1.1em;
+                margin-bottom: 40px;
+                opacity: 0.9;
+            }
+
+            .cta-button {
+                display: inline-block;
+                padding: 16px 40px;
+                background-color: var(--accent);
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 8px;
+                font-size: 1.1em;
+                font-weight: 600;
+                transition:
+                    background-color 0.3s,
+                    transform 0.2s;
+                border: none;
+                cursor: pointer;
+            }
+
+            .cta-button:hover {
+                background-color: var(--accent-hover);
+                transform: translateY(-2px);
+            }
+
+            .cta-button:active {
+                transform: translateY(0);
+            }
+
+            .theme-toggle {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: var(--accent);
+                color: #ffffff;
+                border: none;
+                cursor: pointer;
+                font-size: 1.5em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition:
+                    background-color 0.3s,
+                    transform 0.2s;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .theme-toggle:hover {
+                background-color: var(--accent-hover);
+                transform: scale(1.1);
+            }
+
+            .copyright {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                font-size: 0.85em;
+                opacity: 0.6;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Make Things With AI</h1>
+            <p>Join us for an exciting summer experience exploring artificial intelligence</p>
+            <a href="/summer/" class="cta-button">Join our Summer Camp</a>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+
+        <div class="copyright">© 2026 GameLeaf, Inc.</div>
+
+        <script>
+            const themeToggle = document.getElementById("themeToggle");
+            const html = document.documentElement;
+            const body = document.body;
+
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const storedTheme = localStorage.getItem("theme");
+            const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+
+            function setTheme(theme) {
+                if (theme === "dark") {
+                    body.classList.add("dark-mode");
+                    body.classList.remove("light-mode");
+                    themeToggle.textContent = "☀️";
+                    html.style.colorScheme = "dark";
+                } else {
+                    body.classList.add("light-mode");
+                    body.classList.remove("dark-mode");
+                    themeToggle.textContent = "🌙";
+                    html.style.colorScheme = "light";
+                }
+                localStorage.setItem("theme", theme);
+            }
+
+            setTheme(initialTheme);
+
+            themeToggle.addEventListener("click", () => {
+                const currentTheme = localStorage.getItem("theme") || (prefersDark ? "dark" : "light");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+                setTheme(newTheme);
+            });
+        </script>
+    </body>
+</html>
