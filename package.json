@@ -1,0 +1,21 @@
+{
+    "name": "makethingswithai",
+    "version": "1.0.0",
+    "description": "Website",
+    "homepage": "https://github.com/MakeThingsWithAI/website#readme",
+    "bugs": {
+        "url": "https://github.com/MakeThingsWithAI/website/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MakeThingsWithAI/website.git"
+    },
+    "license": "Apache-2.0",
+    "author": "Ron B. Yeh",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "build": "echo \"DONE\" && exit 0",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
